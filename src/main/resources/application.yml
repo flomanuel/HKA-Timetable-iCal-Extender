@@ -40,6 +40,8 @@ logging:
 # --------------------------------------------------------
 # P r o f i l e   " d e v "
 # --------------------------------------------------------
+spring:
+  config.activate.on-profile: dev
 logging:
   file.name: /tmp/application.log
   logback.rollingpolicy:
