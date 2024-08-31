@@ -19,15 +19,17 @@ plugins {
     java
     idea
     checkstyle
-    id("org.springframework.boot") version "3.2.3"
-    id("io.spring.dependency-management") version "1.1.4"
+    id("org.springframework.boot") version libs.versions.springBootPlugin.get()
+    id("io.spring.dependency-management") version libs.versions.springDependencyManagementPlugin.get()
 }
 
 group = "de.florian-emanuel-sauer"
 version = "1"
 
+val javaVersion: String = System.getProperty("java") ?: libs.versions.javaVersion.get()
+
 java {
-    sourceCompatibility = JavaVersion.VERSION_21
+    sourceCompatibility = JavaVersion.toVersion(javaVersion)
 }
 
 configurations {
@@ -43,7 +45,7 @@ repositories {
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
-    implementation("net.sf.biweekly:biweekly:0.6.8")
+    implementation("net.sf.biweekly:biweekly:${libs.versions.biweekly.get()}")
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
@@ -53,10 +55,11 @@ tasks.withType<Test> {
     useJUnitPlatform()
 }
 
-tasks.named("bootJar", org.springframework.boot.gradle.tasks.bundling.BootJar::class.java) {// Gradle Task: build > assemble
+// Gradle Task: build > assemble
+tasks.named("bootJar", org.springframework.boot.gradle.tasks.bundling.BootJar::class.java) {
     doLast {
         println(
-                """
+            """
             |
             |Call of executable JAR-file:
             |Production:

@@ -55,7 +55,7 @@ public class IcalExtenderService {
     /**
      * Keyword so that Reclaim AI adds travel time before and after the events.
      */
-    private static final String RECLAIM_DESCRIPTION_TRAVEL = "#needs_travel";
+    public static final String RECLAIM_DESCRIPTION_TRAVEL = "#needs_travel";
 
     /**
      * Repository interface for loading the original iCal file from the university website.

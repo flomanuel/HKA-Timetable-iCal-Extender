@@ -1,0 +1,6 @@
+[versions]
+javaVersion = "21"
+springBootPlugin = "3.2.3"
+springDependencyManagementPlugin = "1.1.4"
+
+biweekly = "0.6.8"
