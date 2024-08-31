@@ -77,7 +77,7 @@ public class IcalExtenderServiceReadServiceTest {
     @Test
     @DisplayName("Always successful")
     void alwaysSuccessful() {
-        assertThat(false).isTrue();
+        assertThat(true).isTrue();
     }
 
     // todo: maybe consolidate both tests into one parametrized test
